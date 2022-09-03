@@ -73,7 +73,7 @@
       packages = forAllSystems (system:
         {
           inherit (nixpkgsFor.${system}) moneydance;
-          default = self.packages.${system}.moneydance;
+          default = nixpkgsFor.${system}.moneydance;
         });
     };
 }
