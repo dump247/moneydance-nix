@@ -11,8 +11,8 @@
       lastModifiedDate = self.lastModifiedDate or self.lastModified or "19700101";
 
       # Version and sha256 of the Moneydance linux tarball
-      version = "2022.5_4091";
-      sha256 = "6bc9d9c4ad3b3a5368d79f8374991e6af75bb4038721c6c2f17506b185e6d560";
+      version = "2022.6_4097";
+      sha256 = "376d1e806f917e3730756b96428ce606e8b39847e24b082898a3ad1a96dfbf51";
       moneydanceUrl = "https://infinitekind.com/stabledl/${version}/moneydance-linux.tar.gz";
 
       # System types to support.
