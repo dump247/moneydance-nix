@@ -10,10 +10,10 @@
     version = "2023.1_5006";
     sha256 = "e8fe0d3941b35ba9230bcfc49127d6940230da03b16392d11ecc14a1c8ffc521";
     url = "https://infinitekind.com/stabledl/${version}/moneydance-linux.tar.gz";
-    pkgs = import nixpkgs { system = "x86_64-linux"; };
-  in
-  {
-    packages.x86_64-linux.default = with pkgs; stdenv.mkDerivation rec {
+
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+    package = with pkgs; stdenv.mkDerivation rec {
       name = "moneydance-${version}";
 
       src = fetchurl { inherit sha256 url; };
@@ -45,5 +45,20 @@
         "$out"/jre/lib/*.so
       '';
     };
+  in
+  {
+    checks.${system}.default = pkgs.runCommand "moneydance-${version}-check" {} ''
+      set -e
+
+      # Check if java can run (no library discovery failures)
+      ${package}/jre/bin/java --version
+
+      # TODO check that java can load varous X libs?
+
+      # Create the out dir so nix knows the derivation completed successfully
+      mkdir $out
+      '';
+
+    packages.${system}.default = package;
   };
 }
