@@ -2,13 +2,13 @@
   description = "Moneydance - Personal Finance Manager";
 
   # Nixpkgs / NixOS version to use.
-  inputs.nixpkgs.url = "nixpkgs/nixos-23.05";
+  inputs.nixpkgs.url = "nixpkgs/nixos-24.05";
 
   outputs = { self, nixpkgs }:
   let
     # Version and sha256 of the Moneydance linux tarball
-    version = "2023.3_5064";
-    sha256 = "962538edb4ca1818430a711068a034ad434f981607ff3309ec53a19ade61435e";
+    version = "2024_5118";
+    sha256 = "03ed62ff2f5b643e3d49a956e4f1830ff382d943ef64b2eb9203b127d1c8f407";
     url = "https://infinitekind.com/stabledl/${version}/moneydance-linux.tar.gz";
 
     system = "x86_64-linux";
